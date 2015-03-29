@@ -5,7 +5,7 @@
 # of the queries in queries.txt. This script then sorts and 
 # trims each of the score files mentioned above.
 
-queryCount=$( wc -l < queries.txt )
+queryCount="$( wc -l < queries.txt )"
 
 # run Snoogle to calculate BM25 scores
 java Snoogle

@@ -25,9 +25,11 @@ public class BM25 {
         double avdl = index.getAvgDocLen();     // avg length of a doc in collection
         double dl = index.getDocLen(docID);     // length of given document
         double K = k1 * ((1 - b) + b * dl / avdl);
+
         for(String term : terms){
             int fi = 0;
             List<Tuple> values = index.getValues(term);
+
             for(Tuple value : values){
                 if(value.getDocID() == docID){
                     fi = value.getTermFreq();
@@ -35,10 +37,10 @@ public class BM25 {
                 }
             }
             int qfi = countTermRepeats(terms, term);    // num occurences of term i in query
-            int ri = 0;     // set to zero because we have no relevance data
-            int R = 0;      // set to zero because we have no relevance data
-            int ni = index.getListLen(term);    // num docs containing term i
-            int N = index.getDocQty();          // num docs in collection
+            int ri = 0;                                 // we have no relevance data (set to 0)
+            int R = 0;                                  // we have no relevance data (set to 0)
+            int ni = index.getListLen(term);            // num docs containing term i
+            int N = index.getDocQty();                  // num docs in collection
 
             double idf = Math.log(((ri + 0.5) / (R - ri + 0.5)) / ((ni - ri + 0.5) / (N - ni - R + ri + 0.5)) + 1);
             score += idf * (((k1 + 1) * fi) / (K + fi)) * (((k2 + 1) * qfi) / (k2 + qfi));
@@ -56,6 +58,4 @@ public class BM25 {
         }
         return termCount;
     }
-
 }
-
