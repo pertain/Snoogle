@@ -13,11 +13,11 @@ java Snoogle
 # sort & trim each scores file
 for (( i=1; i<$queryCount; i++ ))
 do
-	inFile=q"${i}"_scores.txt
-	outFile=q"${i}"_top100.txt
-	sort -t $'\t' -rnk4 "$inFile" | head -n 100 > "$outFile"
-	awk -F"\t" '{print $1,$2,$3,FNR,$4,$5,$6}' OFS="\t" "$outFile" > temp.txt
-	mv temp.txt "$outFile"
+    inFile=q"${i}"_scores.txt
+    outFile=q"${i}"_top100.txt
+    sort -t $'\t' -rnk4 "$inFile" | head -n 100 > "$outFile"
+    awk -F"\t" '{print $1,$2,$3,FNR,$4,$5,$6}' OFS="\t" "$outFile" > temp.txt
+    mv temp.txt "$outFile"
 done
 
 # clean up
