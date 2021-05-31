@@ -1,11 +1,13 @@
-# hw05_ersing.sh
+#!/bin/bash
+
+# snoogle.sh
 #
-# This is the driver program for my search engine (Snoogle).
-# It calls the Java program which outputs a text file for each
+# This is the driver for my search engine (Snoogle).
+# It calls a Java program which outputs a text file for each
 # of the queries in queries.txt. This script then sorts and 
 # trims each of the score files mentioned above.
 
-queryCount="$( wc -l < queries.txt )"
+queryCount="$( wc -l < ./data/queries.txt )"
 
 # run Snoogle to calculate BM25 scores
 java Snoogle

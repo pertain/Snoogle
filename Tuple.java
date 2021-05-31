@@ -1,3 +1,5 @@
+/* Tuple.java */
+
 public class Tuple{
     private int docID;
     private int termFreq;

@@ -1,7 +1,6 @@
 /* Snoogle.java
  *
- * This is the driver for hw05 in csc320. The program is a
- * simple search engine that uses an inverted index and the
+ * Simple search engine that uses an inverted index and the
  * BM25 algorithm.
  */
 
@@ -14,8 +13,8 @@ import java.util.*;
 import java.io.IOException;
 
 public class Snoogle {
-    private static final String TC_FILE = "tccorpus.txt";
-    private static final String Q_FILE = "queries.txt";
+    private static final String TC_FILE = "data/tccorpus.txt";
+    private static final String Q_FILE = "data/queries.txt";
 
     public static void main(String[] args) throws IOException {
         Inverted iIndex = new Inverted();
